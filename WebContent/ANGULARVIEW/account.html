@@ -1,0 +1,146 @@
+<div ng-controller="accountCntrl" id="body">
+<div class="bodyDiv">
+<style>
+.mindue {
+                border: 3px solid RED;
+                position:absolute; TOP:270px; LEFT:612px; WIDTH:322px; HEIGHT:30px
+}
+.intcharge {
+                border: 3px solid RED;
+                position:absolute; TOP:382px; LEFT:150px; WIDTH:322px; HEIGHT:30px
+}
+.tablecolor {
+	            color: white;
+}
+ .acqueryshadow {
+    border-style: solid;
+    border-color: #597749;
+    position:absolute; TOP:147px; LEFT:122px; WIDTH:1120px; HEIGHT:410px;
+    box-shadow: 10px 10px 5px GREY;
+    background: WHITE; 
+    
+}
+</style>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="http://localhost:8090/ModernizationUI/Index.html#/">Home</a></li>
+      <li><a href="" ng-click="transactionview()">Transaction Posting</a></li>
+      <li><a href="" ng-click="accrueInterest()">Interest Accrual</a></li>
+      <li><a href="" ng-click="chargeFee()">Charge Fee</a></li>
+      <li><a href="" ng-click="applyMinPay()">Minimum Payment</a></li>
+    </ul>
+  </div>
+</nav>
+<h2 align="center">
+		<b> Account Overview </b>
+	</h2>
+	<div style="height: 30px">
+		<p align="center" style="color: red">
+			<b>{{errmsg}}</b>
+		</p>
+   </div>
+
+<div class="col-md-12 col-md-offset-0">
+  
+      
+     <div class="mindue" ng-show="showmindue"></div> 
+     <div class="intcharge" ng-show="intcharge"></div>  
+     
+   
+            <br>
+              <table class="table">
+                  <tr>
+                        <td>
+                          
+                                    <tr>
+                                          <td class="text-control-body"><b>Account Number</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="accountNumber" class="textfeild" ng-disabled="true"
+				                        	required /></td>
+				                           <td class="text-control-body"><b>Cust Name</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="custName" class="textfeild" ng-disabled="true"
+				                        	required /></td>	
+				                    </tr>
+				                     <tr>
+                                          <td class="text-control-body"><b>Address Line 1</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="addressLine1" class="textfeild" ng-disabled="true"
+				                        	required /></td>
+				                           <td class="text-control-body"><b>addressLine2</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="addressLine2" class="textfeild" ng-disabled="true"
+				                        	required /></td>	
+				                    </tr>
+				                     <tr>
+                                          <td class="text-control-body"><b>City</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="city" class="textfeild" ng-disabled="true"
+				                        	required /></td>
+				                           <td class="text-control-body"><b>State</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="state" class="textfeild" ng-disabled="true"
+				                        	required /></td>	
+				                    </tr>
+                                
+                                     <tr>
+                                          <td class="text-control-body"><b>Credit Limit</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="creditLimit" class="textfeild" ng-disabled="true"
+				                        	required /></td>
+				                           <td class="text-control-body"><b>Current Balance</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="currentBalance" class="textfeild" ng-disabled="true"
+				                        	required /></td>	
+				                    </tr>
+                               
+                                      <tr>
+                                          <td class="text-control-body"><b>Open2Buy</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="openToBuy" class="textfeild" ng-disabled="true"
+				                        	required /></td>
+				                           <td class="text-control-body"><b>Minimum Due</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="minimumDue" class="textfeild" ng-disabled="true"
+				                        	required /></td>	
+				                    </tr>
+                               
+                                        <tr>
+                                          <td class="text-control-body"><b>Pricing ID</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="pricingId" class="textfeild" ng-disabled="true"
+				                        	required /></td>
+				                           <td class="text-control-body"><b>Fee Charged</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="feeCharged" class="textfeild" ng-disabled="true"
+				                        	required /></td>	
+				                    </tr>
+                               
+                                   <tr>
+                                          <td class="text-control-body"><b>Interest Charged</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="intCharged" class="textfeild" ng-disabled="true"
+				                        	required /></td>
+				                           <td class="text-control-body"><b>statusCode</b></td>
+                                          <td><input type="text" 
+				                        	ng-model="statusCode" class="textfeild" ng-disabled="true"
+				                        	required /></td>	
+				                    </tr>
+                                
+                                 
+                              </table>
+                        </td>
+                       
+                  </tr>
+            </table>
+ 
+ 
+      </div>
+      </div>
+  </div>
+      

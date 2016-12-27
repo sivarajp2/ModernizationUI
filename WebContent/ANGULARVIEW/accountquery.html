@@ -1,0 +1,63 @@
+  <style>
+         .well {
+             height: 50px;
+             width: 60%;
+             color: white;
+             background-color: rgb(58,3,15);
+         }
+         .acqueryshadow {
+    width: 300px;
+    height: 100px;
+    box-shadow: 10px 10px 5px grey;
+    background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(192,192,192,1) 84%, rgba(128,128,128,1) 100%); 
+    position:absolute; TOP:200px; LEFT:225px; WIDTH:638px; HEIGHT:190px
+}
+.header {
+	background-color: white;
+	color: black;
+	text-align: center;
+	padding: 1px;
+	height: 70px;
+	border-radius: 5px;
+	width: 100%;
+}
+    </style>
+
+  <div ng-controller="accountQueryCntrl" id="body">
+    <div class="bodyDiv">
+ <div class="header">
+		<h2>Core Card Processing</h2>
+ </div> 
+   
+
+	<div style="height: 30px">
+		<p align="center" style="color: red">
+			<b>{{errmsg}}</b>
+		</p>
+   </div>
+
+      <form name="form">
+       <div class="col-md-4 col-md-offset-3">
+       <div class="form-group">
+          <label for="AccountNumber">Account Number</label>
+          <input type="text" name="acct_no" ng-model="acct_no" ng-maxlength="19" class="form-control" ng-required="true" /> 
+          <span ng-show="form.acct_no.$error.maxlength">Input is too long!</span>
+          <span ng-show="form.acct_no.$dirty && form.acct_no.$error.required">Account Number - Mandate!</span>
+         </div>
+         <button class="btn btn-info" type="submit" ng-click='accountDetails(acct_no)' >
+          <span class="glyphicon glyphicon-edit"></span>lookup        
+        </button>
+        
+         <br>
+         <br> 
+          <br>
+         <br> 
+          <br>
+         <br> 
+          <br>
+         <br> 
+       
+      </div>
+      </form>
+      </div>
+      </div>

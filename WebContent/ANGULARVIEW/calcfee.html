@@ -1,0 +1,105 @@
+<div class="bodyDiv">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="http://localhost:8090/ModernizationUI/Index.html#/">Home</a></li>
+      <li><a href="" ng-click="return2overview()">Return</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div ng-controller="calcFeeCntrl" id="body">
+
+<h2 align="center">
+		<b>:( Transaction Posting :)</b>
+	</h2>
+	<div style="height: 30px">
+		<p align="center" style="color: red">
+			<b>{{errmsg}}</b>
+		</p>
+   </div>
+   
+	<form name="form" ng-submit="submitForm(form.$valid)" novalidate>
+		<table class="table">
+			<tr>
+				<td class="text-control-body"><b>Account Number</b></td>
+				<td><input type="text" 
+					ng-model="accountnumber" class="form-control" ng-disabled="true"
+					 /></td>
+					 
+					 <td class="text-control-body"><b>Transaction Type</b></td>
+				        <td>
+			    		<select  ng-model="transactiontypes" name="transactiontypes" ng-options="x for x in transactiontype" class="form-control">
+                        </select>
+						
+						</td>
+					 
+				
+				<td class="text-control-body"><b>Transaction code</b></td>
+				<td><input type="number" 
+					ng-model="transactioncode" ng-maxlength="4" ng-minlength="4" 
+					name="transactioncode" required class="form-control" ng-pattern="/^[0-9]{1,4}$/"
+										  />
+					<span ng-show="form.transactioncode.$error.pattern" style="color:red">Enter only number.</span>					  
+					<span ng-show="form.transactioncode.$error.maxlength">Input is too long!</span>
+					<span ng-show="form.transactioncode.$error.minlength">Input is too short!</span>
+                  					  
+										  
+										  </td>
+			</tr>
+
+			<tr>
+				
+				<td class="text-control-body"><b>Transaction Desc</b></td>
+				<td><textarea rows="3" cols="22"
+						 ng-model="transactiondesc" name="transactiondesc" required ng-maxlength="40" ng-minlength="8" 
+						
+						class="form-control" ></textarea>
+						
+						<span ng-show="form.transactiondesc.$error.maxlength">Input is too long!</span>
+						<span ng-show="form.transactiondesc.$error.minlength">Input is too short!</span>
+                        <span ng-show="form.transactiondesc.$dirty && form.amount.$error.required">Transaction Desc- Mandate!</span>
+						</td>
+				<td class="text-control-body"><b>Date</b></td>
+				<td><input type="text" 
+					ng-model="transactiondate" class="form-control"
+					ng-disabled="false"  /></td>
+
+
+               <td class="text-control-body"><b>Amount</b></td>
+				<td><input type="number" 
+					ng-model="transactionamount" name="transactionamount" placeholder="Decimal" required ng-maxlength="17" ng-minlength="1"  class="form-control" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.05" ng-change="validateCreditLimit(transactionamount,transactiontypes)" ng-disabled="toggle"/>
+	                <span ng-show="form.transactionamount.$error.pattern" style="color:red">Enter only number.</span> 
+					<span ng-show="form.transactionamount.$error.maxlength">Input is too long!</span>
+                    <span ng-show="form.transactionamount.$dirty && form.amount.$error.required">Amount- Mandate!</span>
+                    <span ng-show="form.transactionamount.$error.minlength">Input is too short!</span>
+					</td>
+
+
+			</tr>
+
+			
+
+
+
+			
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+
+				<td><button class="btnSubmit" ng-disabled="form.$invalid" ng-click='post(accountnumber,transactionamount,transactioncode,transactiontype,transactiondesc,transactiondate)' ng-show="showpost">
+						Post<span class="glyphicon glyphicon-log-in"></span>
+					</button>
+
+					</td>
+			</tr>
+		</table>
+
+</form>
+</div>
+</div>

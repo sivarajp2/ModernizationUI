@@ -1,0 +1,58 @@
+<div class="bodyDiv">
+<div ng-controller="tranCntrl" id="body">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="http://localhost:8090/ModernizationUI/Index.html#/">Home</a></li>
+      <li><a href="" ng-click="return2overview()">Return</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<h2 align="center">
+		<b>Posted Transactions - View</b>
+	</h2>
+	<div style="height: 30px">
+		<p align="center" style="color: red">
+			<b>{{errmsg}}</b>
+		</p>
+   </div>
+   <div class="col-md-12">
+    <div id="transaction-table">  
+	<table class="table table-hover">
+	 <thead>
+	     <th>
+	          Date
+	     </th>
+	     <th>
+	          Amount
+	     </th>
+	     <th>
+	          Describtion
+	     </th>
+	     <th>
+	          Type
+	     </th>
+	     <th>
+	          Transaction Code
+	     </th>                         
+	 
+	</thead>
+	     <tr ng-repeat="tran in transactions | startFrom:(currentPage - 1) * pageSize | limitTo: pageSize">
+	     <td> {{tran.transactionDate}} </td>
+	     <td> {{tran.transactionAmount}} </td>
+	     <td> {{tran.transactionDesc}} </td>
+	     <td> {{tran.transactionType}} </td>
+	     <td> {{tran.transactionCode}} </td>
+	     </tr>
+	</table>
+	</div> 
+	<ul uib-pagination total-items="transactions.length" ng-model="currentPage" items-per-page="pageSize"></ul>
+</div>
+</div>
+</div>
